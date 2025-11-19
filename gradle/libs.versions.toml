@@ -1,0 +1,33 @@
+[versions]
+lombok = "1.18.42"
+wiremock-spring-boot = "3.10.6"
+spring-boot = "3.5.7"
+spotless = "8.0.0"
+problem4j-spring = "1.1.0"
+
+[plugins]
+spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }
+spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
+
+[libraries]
+# managed by spring-boot-dependencies
+spring-boot-dependencies = { module = "org.springframework.boot:spring-boot-dependencies", version.ref = "spring-boot" }
+spring-boot-starter-actuator = { module = "org.springframework.boot:spring-boot-starter-actuator" }
+spring-boot-starter-data-jpa = { module = "org.springframework.boot:spring-boot-starter-data-jpa" }
+spring-boot-starter-security = { module = "org.springframework.boot:spring-boot-starter-security" }
+spring-boot-starter-test = { module = "org.springframework.boot:spring-boot-starter-test" }
+spring-boot-starter-web = { module = "org.springframework.boot:spring-boot-starter-web" }
+spring-boot-testcontainers = { module = "org.springframework.boot:spring-boot-testcontainers" }
+spring-security-test = { module = "org.springframework.security:spring-security-test" }
+jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind" }
+junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher" }
+micrometer-registry-prometheus = { module = "io.micrometer:micrometer-registry-prometheus" }
+postgresql = { module = "org.postgresql:postgresql" }
+testcontainers-postgresql = { module = "org.testcontainers:postgresql" }
+testcontainers-junit-jupiter = { module = "org.testcontainers:junit-jupiter" }
+
+problem4j-spring-bom = { module = "io.github.malczuuu.problem4j:problem4j-spring-bom", version.ref = "problem4j-spring" }
+problem4j-spring-webmvc = { module = "io.github.malczuuu.problem4j:problem4j-spring-webmvc" }
+
+lombok = { module = "org.projectlombok:lombok", version.ref = "lombok" }
+wiremock-spring-boot = { module = "org.wiremock.integrations:wiremock-spring-boot", version.ref = "wiremock-spring-boot" }
