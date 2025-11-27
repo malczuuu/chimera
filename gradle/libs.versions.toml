@@ -1,9 +1,10 @@
 [versions]
 lombok = "1.18.42"
-wiremock-spring-boot = "3.10.6"
-spring-boot = "3.5.8"
-spotless = "8.1.0"
 problem4j-spring = "1.1.3"
+spotless = "8.1.0"
+spring-boot = "3.5.8"
+springdoc-openapi = "2.8.14"
+wiremock-spring-boot = "3.10.6"
 
 [plugins]
 spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }
@@ -28,6 +29,7 @@ testcontainers-junit-jupiter = { module = "org.testcontainers:junit-jupiter" }
 
 problem4j-spring-bom = { module = "io.github.malczuuu.problem4j:problem4j-spring-bom", version.ref = "problem4j-spring" }
 problem4j-spring-webmvc = { module = "io.github.malczuuu.problem4j:problem4j-spring-webmvc" }
+springdoc-openapi-starter-webmvc-ui = { module = "org.springdoc:springdoc-openapi-starter-webmvc-ui", version.ref = "springdoc-openapi" }
 
 lombok = { module = "org.projectlombok:lombok", version.ref = "lombok" }
 wiremock-spring-boot = { module = "org.wiremock.integrations:wiremock-spring-boot", version.ref = "wiremock-spring-boot" }

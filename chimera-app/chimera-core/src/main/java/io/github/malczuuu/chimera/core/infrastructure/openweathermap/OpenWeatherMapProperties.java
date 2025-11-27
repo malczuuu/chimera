@@ -1,8 +1,10 @@
 package io.github.malczuuu.chimera.core.infrastructure.openweathermap;
 
+import lombok.Getter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.bind.DefaultValue;
 
+@Getter
 @ConfigurationProperties(prefix = "chimera.openweathermap")
 public class OpenWeatherMapProperties {
 
@@ -14,13 +16,5 @@ public class OpenWeatherMapProperties {
       @DefaultValue("") String token) {
     this.weatherEndpoint = weatherEndpoint;
     this.token = token;
-  }
-
-  public String getWeatherEndpoint() {
-    return weatherEndpoint;
-  }
-
-  public String getToken() {
-    return token;
   }
 }

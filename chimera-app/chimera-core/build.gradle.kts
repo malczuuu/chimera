@@ -10,6 +10,7 @@ dependencies {
     api(libs.spring.boot.starter.data.jpa)
 
     api(libs.problem4j.spring.webmvc)
+    api(libs.springdoc.openapi.starter.webmvc.ui)
 
     compileOnly(libs.lombok)
     annotationProcessor(libs.lombok)

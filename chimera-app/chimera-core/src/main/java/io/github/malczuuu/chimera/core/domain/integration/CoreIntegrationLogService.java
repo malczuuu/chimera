@@ -5,6 +5,7 @@ import io.github.malczuuu.chimera.core.common.model.content.Content;
 import io.github.malczuuu.chimera.core.common.model.integration.IntegrationLogModel;
 import java.time.ZoneOffset;
 import java.util.List;
+import org.springframework.transaction.annotation.Transactional;
 
 public class CoreIntegrationLogService implements IntegrationLogService {
 
@@ -41,6 +42,7 @@ public class CoreIntegrationLogService implements IntegrationLogService {
     }
   }
 
+  @Transactional
   @Override
   public IdentityModel createIntegrationLog(IntegrationLogModel integrationLog) {
     IntegrationLogEntity entity = createIntegrationLogEntity(integrationLog);

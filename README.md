@@ -1,6 +1,6 @@
 # Chimera
 
-A simple app for exploring selected concepts related to Spring Boot.
+Yet another throwaway app for exploring some concepts related to Spring Boot.
 
 ## How to use this
 
