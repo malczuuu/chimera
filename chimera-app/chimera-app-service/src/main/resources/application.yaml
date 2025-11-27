@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: chimera-app-cloud
+  main:
+    banner-mode: off
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 15MB
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+  datasource:
+    url: jdbc:postgresql://localhost:5432/chimera
+    username: postgres
+    password: postgres
