@@ -19,7 +19,7 @@ services:
       start_period: 10s
 
   wiremock:
-    image: wiremock/wiremock:3.13.1-alpine
+    image: wiremock/wiremock:3.13.2-alpine
     restart: unless-stopped
     ports:
       - "127.0.0.1:1080:8080"
