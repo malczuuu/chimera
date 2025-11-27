@@ -12,7 +12,7 @@ public class OpenWeatherMapProperties {
   private final String token;
 
   public OpenWeatherMapProperties(
-      @DefaultValue("https://api.openweathermap.org/data/2.5/weather") String weatherEndpoint,
+      @DefaultValue("http://localhost:1080/data/2.5/weather") String weatherEndpoint,
       @DefaultValue("") String token) {
     this.weatherEndpoint = weatherEndpoint;
     this.token = token;
