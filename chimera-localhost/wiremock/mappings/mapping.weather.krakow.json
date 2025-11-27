@@ -1,0 +1,19 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/data/2.5/weather",
+    "queryParameters": {
+      "q": {
+        "equalTo": "Krakow",
+        "caseInsensitive": true
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "bodyFileName": "response.weather.krakow.txt",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}
