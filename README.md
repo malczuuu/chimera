@@ -1,6 +1,6 @@
 # Chimera
 
-Yet another throwaway app for exploring some concepts related to Spring Boot.
+Yet another throwaway app that retrieves weather for exploring some concepts related to Spring Boot.
 
 ## How to use this
 
