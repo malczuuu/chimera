@@ -10,7 +10,6 @@ plugins {
 
 rootProject.name = "chimera"
 
-include(":chimera-app:chimera-app-flyway")
 include(":chimera-app:chimera-app-service")
 include(":chimera-app:chimera-bom")
 include(":chimera-app:chimera-core")
