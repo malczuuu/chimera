@@ -23,3 +23,10 @@ updates:
           - "version-update:semver-major"
     labels:
       - "dependencies"
+
+  - package-ecosystem: "docker-compose"
+    directory: "/chimera-localhost"
+    schedule:
+      interval: "quarterly"
+    labels:
+      - "dependencies"
