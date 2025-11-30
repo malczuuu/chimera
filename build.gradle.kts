@@ -1,4 +1,5 @@
 import com.diffplug.spotless.LineEnding
+import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 
 plugins {
     alias(libs.plugins.spotless)
@@ -7,10 +8,8 @@ plugins {
 subprojects {
     group = "io.github.malczuuu.chimera"
 
-    /**
-     * In order to avoid hardcoding snapshot versions, we derive the version from the current Git commit hash. For CI/CD
-     * add -Pversion={releaseVersion} parameter to match Git tag.
-     */
+    // In order to avoid hardcoding snapshot versions, version is derived from the current Git commit hash. For CI/CD
+    // add -Pversion={releaseVersion} parameter to match Git tag.
     version =
         if (version == "unspecified") {
             getSnapshotVersion(rootProject.rootDir)
@@ -18,19 +17,15 @@ subprojects {
             version
         }
 
-    /**
-     * Configure Java 25 to all java submodules.
-     */
+    // Configure Java 25 to all submodules that use java plugin.
     pluginManager.withPlugin("java") {
         configure<JavaPluginExtension> {
             toolchain.languageVersion = JavaLanguageVersion.of(25)
         }
     }
 
-    /**
-     * Usage:
-     *   ./gradlew printVersion
-     */
+    // Usage:
+    //   ./gradlew printVersion
     tasks.register("printVersion") {
         description = "Prints the current project version to the console"
         group = "help"
@@ -54,8 +49,13 @@ subprojects {
         useJUnitPlatform()
 
         testLogging {
-            events("passed", "skipped", "failed")
+            events("passed", "skipped", "failed", "standardOut", "standardError")
+            exceptionFormat = TestExceptionFormat.SHORT
+            showStandardStreams = true
         }
+
+        // for resolving warnings from mockito
+        jvmArgs("-XX:+EnableDynamicAgentLoading")
 
         systemProperty("user.language", "en")
         systemProperty("user.country", "US")
@@ -87,6 +87,16 @@ spotless {
         lineEndings = LineEnding.UNIX
     }
 
+    spotless {
+        sql {
+            target("**/src/main/resources/**/*.sql")
+
+            dbeaver()
+            endWithNewline()
+            lineEndings = LineEnding.UNIX
+        }
+    }
+
     kotlin {
         target("**/src/**/*.kt")
 
@@ -98,7 +108,7 @@ spotless {
     kotlinGradle {
         target("**/*.gradle.kts")
 
-        ktlint("1.7.1").editorConfigOverride(mapOf("max_line_length" to "120"))
+        ktlint("1.8.0").editorConfigOverride(mapOf("max_line_length" to "120"))
         endWithNewline()
         lineEndings = LineEnding.UNIX
     }
