@@ -6,21 +6,15 @@ plugins {
 dependencies {
     implementation(platform(project(":chimera-app:chimera-bom")))
 
-    implementation(project(":chimera-app:chimera-core"))
+    lombok(libs.lombok)
 
+    implementation(project(":chimera-app:chimera-core"))
     runtimeOnly(libs.micrometer.registry.prometheus)
     runtimeOnly(libs.postgresql)
 
-    testImplementation(libs.spring.boot.starter.test)
-    testImplementation(libs.spring.boot.testcontainers)
-    testImplementation(libs.testcontainers.junit.jupiter)
-    testImplementation(libs.testcontainers.postgresql)
-
+    testImplementation(project(":chimera-app:chimera-migration"))
+    testImplementation(project(":chimera-app:chimera-testkit"))
+    testRuntimeOnly(libs.junit.platform.launcher)
     testRuntimeOnly(libs.micrometer.registry.prometheus)
     testRuntimeOnly(libs.postgresql)
-    testRuntimeOnly(libs.junit.platform.launcher)
-}
-
-tasks.withType<Test> {
-    useJUnitPlatform()
 }

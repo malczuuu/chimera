@@ -1,5 +1,6 @@
 plugins {
     id("java-platform")
+    id("maven-publish")
 }
 
 javaPlatform {
@@ -8,5 +9,10 @@ javaPlatform {
 
 dependencies {
     api(platform(libs.spring.boot.dependencies))
-    api(platform(libs.problem4j.spring.bom))
+
+    constraints {
+        api(project(":chimera-app:chimera-core"))
+        api(project(":chimera-app:chimera-migration"))
+        api(libs.problem4j.spring.webmvc)
+    }
 }

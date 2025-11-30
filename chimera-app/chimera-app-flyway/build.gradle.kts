@@ -6,10 +6,13 @@ plugins {
 dependencies {
     implementation(platform(project(":chimera-app:chimera-bom")))
 
-    implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
+    implementation(project(":chimera-app:chimera-migration"))
+    implementation(libs.flyway.core)
+    implementation(libs.flyway.database.postgresql)
+    implementation(libs.spring.boot.starter.data.jdbc)
+    runtimeOnly(libs.postgresql)
 
-    implementation("org.flywaydb:flyway-core")
-    implementation("org.flywaydb:flyway-database-postgresql")
-
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    testImplementation(project(":chimera-app:chimera-testkit"))
+    testRuntimeOnly(libs.junit.platform.launcher)
+    testRuntimeOnly(libs.postgresql)
 }
