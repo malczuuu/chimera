@@ -1,0 +1,45 @@
+{
+  "coord": {
+    "lon": 19.9167,
+    "lat": 50.0833
+  },
+  "weather": [
+    {
+      "id": 801,
+      "main": "Clouds",
+      "description": "few clouds",
+      "icon": "02d"
+    }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 21.81,
+    "feels_like": 21.43,
+    "temp_min": 21.52,
+    "temp_max": 22.44,
+    "pressure": 1013,
+    "humidity": 53,
+    "sea_level": 1013,
+    "grnd_level": 983
+  },
+  "visibility": 10000,
+  "wind": {
+    "speed": 2.57,
+    "deg": 150
+  },
+  "clouds": {
+    "all": 20
+  },
+  "dt": 1752317660,
+  "sys": {
+    "type": 2,
+    "id": 2090246,
+    "country": "PL",
+    "sunrise": 1752288248,
+    "sunset": 1752346042
+  },
+  "timezone": 7200,
+  "id": {{randomInt lower=10000000 upper=99999999}},
+  "name": "Krakow",
+  "cod": 200
+}
