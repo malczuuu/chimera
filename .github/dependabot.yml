@@ -1,0 +1,32 @@
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "quarterly"
+    target-branch: main
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+
+  - package-ecosystem: "gradle"
+    directory: "/"
+    schedule:
+      interval: "quarterly"
+    target-branch: main
+    open-pull-requests-limit: 10
+    allow:
+      - dependency-type: "direct"
+    ignore:
+      - dependency-name: "*"
+        update-types:
+          - "version-update:semver-major"
+    labels:
+      - "dependencies"
+
+  - package-ecosystem: "docker-compose"
+    directory: "/chimera-localhost"
+    schedule:
+      interval: "quarterly"
+    labels:
+      - "dependencies"
