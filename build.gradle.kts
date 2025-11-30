@@ -87,14 +87,12 @@ spotless {
         lineEndings = LineEnding.UNIX
     }
 
-    spotless {
-        sql {
-            target("**/src/main/resources/**/*.sql")
+    sql {
+        target("**/src/main/resources/**/*.sql")
 
-            dbeaver()
-            endWithNewline()
-            lineEndings = LineEnding.UNIX
-        }
+        dbeaver()
+        endWithNewline()
+        lineEndings = LineEnding.UNIX
     }
 
     kotlin {
