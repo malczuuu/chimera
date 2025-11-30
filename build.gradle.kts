@@ -10,12 +10,9 @@ subprojects {
 
     // In order to avoid hardcoding snapshot versions, version is derived from the current Git commit hash. For CI/CD
     // add -Pversion={releaseVersion} parameter to match Git tag.
-    version =
-        if (version == "unspecified") {
-            getSnapshotVersion(rootProject.rootDir)
-        } else {
-            version
-        }
+    if (version == Project.DEFAULT_VERSION) {
+        version = getSnapshotVersion(rootProject.rootDir)
+    }
 
     // Configure Java 25 to all submodules that use java plugin.
     pluginManager.withPlugin("java") {
