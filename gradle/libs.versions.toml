@@ -1,6 +1,6 @@
 [versions]
 lombok = "1.18.42"
-problem4j-spring = "1.1.3"
+problem4j-spring = "1.1.4"
 spotless = "8.1.0"
 spring-boot = "3.5.8"
 springdoc-openapi = "2.8.14"
