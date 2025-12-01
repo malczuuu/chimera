@@ -2,7 +2,6 @@ import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 
 plugins {
     id("java-library")
-    id("maven-publish")
 }
 
 java {
