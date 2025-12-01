@@ -6,3 +6,8 @@ spring:
     baseline-on-migrate: true
     validate-on-migrate: true
     out-of-order: true
+
+chimera:
+  weather:
+    scheduler:
+      enabled: false

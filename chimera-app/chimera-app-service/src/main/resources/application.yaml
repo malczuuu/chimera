@@ -25,5 +25,6 @@ chimera:
     tracked-cities: Krakow
   weather:
     scheduler:
+      enabled: true
       initial-delay: "5s"
       fixed-delay: "5s"
