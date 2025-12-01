@@ -16,7 +16,7 @@ import org.gradle.api.artifacts.dsl.DependencyHandler
  * }
  * ```
  *
- * Lombok’s Gradle integration can also be achieved by using 3rd-party plugins, but this project
+ * Lombok's Gradle integration can also be achieved by using 3rd-party plugins, but this project
  * intentionally avoids adding such plugins to keep the build small, transparent, and
  * dependency-free. This helper function provides the same Lombok setup without relying on any
  * external plugin.
