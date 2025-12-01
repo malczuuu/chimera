@@ -28,5 +28,6 @@ updates:
     directory: "/chimera-localhost"
     schedule:
       interval: "quarterly"
+    target-branch: main
     labels:
       - "dependencies"
