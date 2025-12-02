@@ -47,6 +47,7 @@ tasks.withType<Test>().configureEach {
     // For resolving warnings from mockito.
     jvmArgs("-XX:+EnableDynamicAgentLoading")
 
+    systemProperty("containers.enabled", project.findProperty("containers.enabled") != "false")
     systemProperty("user.language", "en")
     systemProperty("user.country", "US")
 }
