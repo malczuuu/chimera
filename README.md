@@ -16,9 +16,9 @@ multiple applications.
 This project demonstrates the architectural pattern of creating a **base (core) application** with all business logic
 extracted into an auto-configurable core module. This allows multiple applications to:
 
-- Include the core functionality via dependency management
-- Override or extend specific components as needed
-- Share common business logic while maintaining application-specific customizations
+- Include the core functionality via dependency management.
+- Override or extend specific components as needed.
+- Share common business logic while maintaining application-specific customizations.
 
 ## Architecture
 
@@ -59,4 +59,8 @@ containers via `testcontainers` library.
 4. For doing all-in-one, declare all tasks at once.
    ```bash
    ./gradlew clean spotlessApply build
+   ```
+5. By default, tests that use `testcontainers` are skipped. To enabled add `-Pcontainers.enabled=true`
+   ```bash
+   ./gradlew clean test -Pcontainers.enabled=true
    ```
