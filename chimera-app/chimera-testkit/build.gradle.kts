@@ -56,7 +56,11 @@ tasks.withType<Jar>().configureEach {
 }
 
 tasks.withType<Test>().configureEach {
-    useJUnitPlatform()
+    useJUnitPlatform {
+        if (project.findProperty("containers.enabled")?.toString() == "false") {
+            excludeTags("testcontainers")
+        }
+    }
 
     testLogging {
         events("passed", "skipped", "failed", "standardOut", "standardError")
@@ -67,7 +71,6 @@ tasks.withType<Test>().configureEach {
     // For resolving warnings from mockito.
     jvmArgs("-XX:+EnableDynamicAgentLoading")
 
-    systemProperty("containers.enabled", project.findProperty("containers.enabled") != "false")
     systemProperty("user.language", "en")
     systemProperty("user.country", "US")
 }
