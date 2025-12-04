@@ -64,3 +64,4 @@ containers via `testcontainers` library.
    ```bash
    ./gradlew clean test -Pcontainers.enabled=true
    ```
+   For running in IDE, set `containers.enabled=true` in `gradle.properties` file.
