@@ -1,10 +1,10 @@
 package io.github.malczuuu.chimera.ext.app.service.common.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.json.JsonMapper;
+import java.time.Instant;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 import org.junit.jupiter.api.Test;
@@ -15,7 +15,6 @@ class ExtIntegrationLogModelTest {
       JsonMapper.builder()
           .findAndAddModules()
           .configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
-          .configure(SerializationFeature.INDENT_OUTPUT, true)
           .build();
 
   @Test
@@ -40,19 +39,19 @@ class ExtIntegrationLogModelTest {
 
     ExtIntegrationLogModel log = mapper.readValue(json, ExtIntegrationLogModel.class);
 
-    assertEquals("log-123", log.getId());
-    assertEquals("weather", log.getLabel());
-    assertEquals("out", log.getDirection());
-    assertEquals("http", log.getProtocol());
-    assertEquals("GET", log.getMethod());
-    assertEquals("https://api.example.com/weather", log.getAddress());
-    assertEquals("timeout=5000", log.getRequestAttributes());
-    assertEquals("{\"query\":\"Krakow\"}", log.getRequestBody());
-    assertEquals(
-        OffsetDateTime.of(2025, 12, 4, 10, 0, 0, 0, ZoneOffset.UTC), log.getRequestTimestamp());
-    assertEquals("{\"temp\":15.5}", log.getResponseBody());
-    assertEquals("200 OK", log.getResponseStatus());
-    assertEquals("550e8400-e29b-41d4-a716-446655440000", log.getTraceId());
+    assertThat(log.getId()).isEqualTo("log-123");
+    assertThat(log.getLabel()).isEqualTo("weather");
+    assertThat(log.getDirection()).isEqualTo("out");
+    assertThat(log.getProtocol()).isEqualTo("http");
+    assertThat(log.getMethod()).isEqualTo("GET");
+    assertThat(log.getAddress()).isEqualTo("https://api.example.com/weather");
+    assertThat(log.getRequestAttributes()).isEqualTo("timeout=5000");
+    assertThat(log.getRequestBody()).isEqualTo("{\"query\":\"Krakow\"}");
+    assertThat(log.getRequestTimestamp())
+        .isEqualTo(Instant.parse("2025-12-04T10:00:00Z").atOffset(ZoneOffset.UTC));
+    assertThat(log.getResponseBody()).isEqualTo("{\"temp\":15.5}");
+    assertThat(log.getResponseStatus()).isEqualTo("200 OK");
+    assertThat(log.getTraceId()).isEqualTo("550e8400-e29b-41d4-a716-446655440000");
   }
 
   @Test
@@ -91,7 +90,8 @@ class ExtIntegrationLogModelTest {
           "responseBody" : "{\\"status\\":\\"success\\"}",
           "responseStatus" : "201 Created",
           "traceId" : "7c9e6679-7425-40de-944b-e07fc1f90ae7"
-        }""";
-    assertThat(json).isEqualTo(expectedJson);
+        }
+        """;
+    assertThat(mapper.readTree(json)).isEqualTo(mapper.readTree(expectedJson));
   }
 }

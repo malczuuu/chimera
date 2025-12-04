@@ -1,16 +1,13 @@
 package io.github.malczuuu.chimera.core.common.model.parameter;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 
-import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import org.junit.jupiter.api.Test;
 
 class ParameterModelTest {
 
-  private final JsonMapper mapper =
-      JsonMapper.builder().configure(SerializationFeature.INDENT_OUTPUT, true).build();
+  private final JsonMapper mapper = JsonMapper.builder().build();
 
   @Test
   void shouldDeserializeFromJson() throws Exception {
@@ -25,9 +22,9 @@ class ParameterModelTest {
 
     ParameterModel parameter = mapper.readValue(json, ParameterModel.class);
 
-    assertEquals("param-123", parameter.getId());
-    assertEquals("MAX_RETRIES", parameter.getCode());
-    assertEquals("5", parameter.getValue());
+    assertThat(parameter.getId()).isEqualTo("param-123");
+    assertThat(parameter.getCode()).isEqualTo("MAX_RETRIES");
+    assertThat(parameter.getValue()).isEqualTo("5");
   }
 
   @Test
@@ -43,7 +40,8 @@ class ParameterModelTest {
           "id" : "param-456",
           "code" : "TIMEOUT",
           "value" : "30s"
-        }""";
-    assertThat(json).isEqualTo(expectedJson);
+        }
+        """;
+    assertThat(mapper.readTree(json)).isEqualTo(mapper.readTree(expectedJson));
   }
 }

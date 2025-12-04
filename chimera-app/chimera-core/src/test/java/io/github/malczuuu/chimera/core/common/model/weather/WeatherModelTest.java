@@ -1,10 +1,10 @@
 package io.github.malczuuu.chimera.core.common.model.weather;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.json.JsonMapper;
+import java.time.Instant;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 import java.util.List;
@@ -16,7 +16,6 @@ class WeatherModelTest {
       JsonMapper.builder()
           .findAndAddModules()
           .configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
-          .configure(SerializationFeature.INDENT_OUTPUT, true)
           .build();
 
   @Test
@@ -34,12 +33,12 @@ class WeatherModelTest {
 
     WeatherModel weather = mapper.readValue(json, WeatherModel.class);
 
-    assertEquals("Krakow", weather.getCity());
-    assertEquals(15.5, weather.getTemperature());
-    assertEquals("Partly cloudy", weather.getDescription());
-    assertEquals(List.of("sunny", "warm"), weather.getLabels());
-    assertEquals(
-        OffsetDateTime.of(2025, 12, 4, 10, 0, 0, 0, ZoneOffset.UTC), weather.getTimestamp());
+    assertThat(weather.getCity()).isEqualTo("Krakow");
+    assertThat(weather.getTemperature()).isEqualTo(15.5);
+    assertThat(weather.getDescription()).isEqualTo("Partly cloudy");
+    assertThat(weather.getLabels()).containsExactly("sunny", "warm");
+    assertThat(weather.getTimestamp())
+        .isEqualTo(Instant.parse("2025-12-04T10:00:00Z").atOffset(ZoneOffset.UTC));
   }
 
   @Test
@@ -63,7 +62,8 @@ class WeatherModelTest {
           "description" : "Clear sky",
           "labels" : [ "clear", "hot" ],
           "timestamp" : "2025-12-04T15:30:00Z"
-        }""";
-    assertThat(json).isEqualTo(expectedJson);
+        }
+        """;
+    assertThat(mapper.readTree(json)).isEqualTo(mapper.readTree(expectedJson));
   }
 }

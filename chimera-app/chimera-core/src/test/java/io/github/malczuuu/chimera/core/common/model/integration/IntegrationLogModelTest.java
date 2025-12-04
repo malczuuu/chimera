@@ -1,10 +1,10 @@
 package io.github.malczuuu.chimera.core.common.model.integration;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.json.JsonMapper;
+import java.time.Instant;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 import org.junit.jupiter.api.Test;
@@ -15,7 +15,6 @@ class IntegrationLogModelTest {
       JsonMapper.builder()
           .findAndAddModules()
           .configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
-          .configure(SerializationFeature.INDENT_OUTPUT, true)
           .build();
 
   @Test
@@ -39,18 +38,18 @@ class IntegrationLogModelTest {
 
     IntegrationLogModel log = mapper.readValue(json, IntegrationLogModel.class);
 
-    assertEquals("log-123", log.getId());
-    assertEquals("weather", log.getLabel());
-    assertEquals("out", log.getDirection());
-    assertEquals("http", log.getProtocol());
-    assertEquals("GET", log.getMethod());
-    assertEquals("https://api.example.com/weather", log.getAddress());
-    assertEquals("timeout=5000", log.getRequestAttributes());
-    assertEquals("{\"query\":\"Krakow\"}", log.getRequestBody());
-    assertEquals(
-        OffsetDateTime.of(2025, 12, 4, 10, 0, 0, 0, ZoneOffset.UTC), log.getRequestTimestamp());
-    assertEquals("{\"temp\":15.5}", log.getResponseBody());
-    assertEquals("200 OK", log.getResponseStatus());
+    assertThat(log.getId()).isEqualTo("log-123");
+    assertThat(log.getLabel()).isEqualTo("weather");
+    assertThat(log.getDirection()).isEqualTo("out");
+    assertThat(log.getProtocol()).isEqualTo("http");
+    assertThat(log.getMethod()).isEqualTo("GET");
+    assertThat(log.getAddress()).isEqualTo("https://api.example.com/weather");
+    assertThat(log.getRequestAttributes()).isEqualTo("timeout=5000");
+    assertThat(log.getRequestBody()).isEqualTo("{\"query\":\"Krakow\"}");
+    assertThat(log.getRequestTimestamp())
+        .isEqualTo(Instant.parse("2025-12-04T10:00:00Z").atOffset(ZoneOffset.UTC));
+    assertThat(log.getResponseBody()).isEqualTo("{\"temp\":15.5}");
+    assertThat(log.getResponseStatus()).isEqualTo("200 OK");
   }
 
   @Test
@@ -86,7 +85,8 @@ class IntegrationLogModelTest {
           "requestTimestamp" : "2025-12-04T15:30:00Z",
           "responseBody" : "{\\"status\\":\\"success\\"}",
           "responseStatus" : "201 Created"
-        }""";
-    assertThat(json).isEqualTo(expectedJson);
+        }
+        """;
+    assertThat(mapper.readTree(json)).isEqualTo(mapper.readTree(expectedJson));
   }
 }
