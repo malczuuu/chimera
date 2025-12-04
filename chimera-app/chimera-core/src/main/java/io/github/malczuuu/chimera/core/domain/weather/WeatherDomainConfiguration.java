@@ -1,11 +1,10 @@
 package io.github.malczuuu.chimera.core.domain.weather;
 
 import io.github.malczuuu.chimera.core.domain.parameter.SettingsService;
-import jakarta.persistence.EntityManager;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.jpa.repository.support.JpaRepositoryFactory;
+import org.springframework.data.jpa.repository.support.JpaRepositoryFactoryBean;
 
 @Configuration(proxyBeanMethods = false)
 public class WeatherDomainConfiguration {
@@ -18,8 +17,8 @@ public class WeatherDomainConfiguration {
 
   @ConditionalOnMissingBean(WeatherRepository.class)
   @Bean
-  public WeatherRepository weatherRepository(EntityManager entityManager) {
-    return new JpaRepositoryFactory(entityManager).getRepository(WeatherRepository.class);
+  public JpaRepositoryFactoryBean<WeatherRepository, WeatherEntity, Long> weatherRepository() {
+    return new JpaRepositoryFactoryBean<>(WeatherRepository.class);
   }
 
   @ConditionalOnMissingBean(WeatherService.class)

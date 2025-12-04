@@ -1,12 +1,13 @@
 package io.github.malczuuu.chimera.core.domain.weather;
 
-import io.github.malczuuu.chimera.core.common.model.content.Content;
+import io.github.malczuuu.chimera.core.common.model.Content;
 import io.github.malczuuu.chimera.core.common.model.weather.WeatherModel;
 import java.time.ZoneOffset;
 import java.util.Arrays;
 import java.util.List;
 import org.springframework.data.domain.Limit;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
 public class CoreWeatherService implements WeatherService {
 
@@ -44,7 +45,10 @@ public class CoreWeatherService implements WeatherService {
         entity.getCity(),
         entity.getTemperature(),
         entity.getDescription(),
-        Arrays.asList(entity.getLabels().split(",")),
+        Arrays.stream(entity.getLabels().split(","))
+            .filter(StringUtils::hasLength)
+            .sorted()
+            .toList(),
         entity.getTimestamp().atOffset(ZoneOffset.UTC));
   }
 

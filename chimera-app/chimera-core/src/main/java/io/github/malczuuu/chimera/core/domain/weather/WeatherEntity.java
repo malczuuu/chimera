@@ -46,4 +46,8 @@ public class WeatherEntity extends AbstractEntity {
 
   @Column(name = "timestamp")
   private Instant timestamp;
+
+  public String getLabels() {
+    return labels != null ? labels : "";
+  }
 }

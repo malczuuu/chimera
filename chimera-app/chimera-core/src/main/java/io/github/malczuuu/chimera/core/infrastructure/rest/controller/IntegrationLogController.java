@@ -1,7 +1,7 @@
 package io.github.malczuuu.chimera.core.infrastructure.rest.controller;
 
+import io.github.malczuuu.chimera.core.common.model.Content;
 import io.github.malczuuu.chimera.core.common.model.IdentityModel;
-import io.github.malczuuu.chimera.core.common.model.content.Content;
 import io.github.malczuuu.chimera.core.common.model.integration.IntegrationLogModel;
 import io.github.malczuuu.chimera.core.domain.integration.IntegrationLogService;
 import jakarta.servlet.http.HttpServletRequest;
