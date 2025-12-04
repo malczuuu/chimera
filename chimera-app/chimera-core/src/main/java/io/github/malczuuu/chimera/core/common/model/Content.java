@@ -1,4 +1,4 @@
-package io.github.malczuuu.chimera.core.common.model.content;
+package io.github.malczuuu.chimera.core.common.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;

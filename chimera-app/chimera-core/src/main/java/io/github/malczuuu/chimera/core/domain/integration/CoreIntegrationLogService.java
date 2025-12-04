@@ -1,11 +1,11 @@
 package io.github.malczuuu.chimera.core.domain.integration;
 
+import io.github.malczuuu.chimera.core.common.exception.ResourceNotFoundException;
+import io.github.malczuuu.chimera.core.common.model.Content;
 import io.github.malczuuu.chimera.core.common.model.IdentityModel;
-import io.github.malczuuu.chimera.core.common.model.content.Content;
 import io.github.malczuuu.chimera.core.common.model.integration.IntegrationLogModel;
 import java.time.ZoneOffset;
 import java.util.List;
-import org.springframework.transaction.annotation.Transactional;
 
 public class CoreIntegrationLogService implements IntegrationLogService {
 
@@ -31,18 +31,17 @@ public class CoreIntegrationLogService implements IntegrationLogService {
     return integrationLogRepository
         .findById(parseId(id))
         .map(this::toIntegrationLogModel)
-        .orElseThrow(() -> new RuntimeException("not found"));
+        .orElseThrow(() -> new ResourceNotFoundException("integration-log", id));
   }
 
   private long parseId(String id) {
     try {
       return Long.parseLong(id);
     } catch (NumberFormatException e) {
-      throw new RuntimeException("not found");
+      throw new ResourceNotFoundException("integration-log", id);
     }
   }
 
-  @Transactional
   @Override
   public IdentityModel createIntegrationLog(IntegrationLogModel integrationLog) {
     IntegrationLogEntity entity = createIntegrationLogEntity(integrationLog);
@@ -68,18 +67,18 @@ public class CoreIntegrationLogService implements IntegrationLogService {
     return entity;
   }
 
-  protected IntegrationLogModel toIntegrationLogModel(IntegrationLogEntity log) {
+  protected IntegrationLogModel toIntegrationLogModel(IntegrationLogEntity entity) {
     return new IntegrationLogModel(
-        log.getIdAsString(),
-        log.getLabel(),
-        log.getDirection(),
-        log.getProtocol(),
-        log.getMethod(),
-        log.getAddress(),
-        log.getRequestAttributes(),
-        log.getRequestBody(),
-        log.getRequestTimestamp().atOffset(ZoneOffset.UTC),
-        log.getResponseBody(),
-        log.getResponseStatus());
+        entity.getIdAsString(),
+        entity.getLabel(),
+        entity.getDirection(),
+        entity.getProtocol(),
+        entity.getMethod(),
+        entity.getAddress(),
+        entity.getRequestAttributes(),
+        entity.getRequestBody(),
+        entity.getRequestTimestamp().atOffset(ZoneOffset.UTC),
+        entity.getResponseBody(),
+        entity.getResponseStatus());
   }
 }

@@ -1,6 +1,6 @@
 package io.github.malczuuu.chimera.core.infrastructure.rest.controller;
 
-import io.github.malczuuu.chimera.core.common.model.content.Content;
+import io.github.malczuuu.chimera.core.common.model.Content;
 import io.github.malczuuu.chimera.core.common.model.weather.WeatherModel;
 import io.github.malczuuu.chimera.core.domain.weather.WeatherService;
 import jakarta.servlet.http.HttpServletRequest;

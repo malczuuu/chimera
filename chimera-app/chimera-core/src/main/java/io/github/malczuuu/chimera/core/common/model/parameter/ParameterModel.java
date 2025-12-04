@@ -1,12 +1,12 @@
 package io.github.malczuuu.chimera.core.common.model.parameter;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import lombok.Getter;
 
-@Data
-@AllArgsConstructor(onConstructor_ = @JsonCreator)
+@Getter
+@JsonDeserialize(builder = ParameterModel.ParameterModelBuilder.class)
 public class ParameterModel {
 
   @JsonProperty("id")
@@ -17,4 +17,45 @@ public class ParameterModel {
 
   @JsonProperty("value")
   private final String value;
+
+  public ParameterModel(String id, String code, String value) {
+    this.id = id;
+    this.code = code;
+    this.value = value;
+  }
+
+  public static ParameterModelBuilder builder() {
+    return new ParameterModelBuilder();
+  }
+
+  public static class ParameterModelBuilder {
+
+    private String id;
+    private String code;
+    private String value;
+
+    public ParameterModelBuilder() {}
+
+    @JsonSetter("id")
+    public ParameterModelBuilder id(String id) {
+      this.id = id;
+      return this;
+    }
+
+    @JsonSetter("code")
+    public ParameterModelBuilder code(String code) {
+      this.code = code;
+      return this;
+    }
+
+    @JsonSetter("value")
+    public ParameterModelBuilder value(String value) {
+      this.value = value;
+      return this;
+    }
+
+    public ParameterModel build() {
+      return new ParameterModel(id, code, value);
+    }
+  }
 }

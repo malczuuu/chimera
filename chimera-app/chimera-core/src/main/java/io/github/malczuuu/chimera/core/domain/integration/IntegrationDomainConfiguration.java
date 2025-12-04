@@ -1,10 +1,9 @@
 package io.github.malczuuu.chimera.core.domain.integration;
 
-import jakarta.persistence.EntityManager;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.jpa.repository.support.JpaRepositoryFactory;
+import org.springframework.data.jpa.repository.support.JpaRepositoryFactoryBean;
 
 @Configuration(proxyBeanMethods = false)
 public class IntegrationDomainConfiguration {
@@ -17,8 +16,9 @@ public class IntegrationDomainConfiguration {
 
   @ConditionalOnMissingBean(IntegrationLogRepository.class)
   @Bean
-  public IntegrationLogRepository integrationLogRepository(EntityManager entityManager) {
-    return new JpaRepositoryFactory(entityManager).getRepository(IntegrationLogRepository.class);
+  public JpaRepositoryFactoryBean<IntegrationLogRepository, IntegrationLogEntity, Long>
+      integrationLogRepository() {
+    return new JpaRepositoryFactoryBean<>(IntegrationLogRepository.class);
   }
 
   @ConditionalOnMissingBean(IntegrationLogService.class)

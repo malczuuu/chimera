@@ -21,7 +21,7 @@ public class SettingsInitializer implements CommandLineRunner {
     List<String> trackedCities = settingsService.findTrackedCities();
 
     if (trackedCities.isEmpty()) {
-      settingsService.setTrackedCities(List.of(this.trackedCities.split(",")));
+      settingsService.setTrackedCities(this.trackedCities.split(","));
     }
   }
 }
