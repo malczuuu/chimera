@@ -62,7 +62,7 @@ spotless {
     }
 
     format("yaml") {
-        target("**/*.yml", "**/*.yaml")
+        target("**/src/**/*.yml", "**/src/**/*.yaml")
 
         trimTrailingWhitespace()
         leadingTabsToSpaces(2)
