@@ -1,1 +1,0 @@
-# Chimera Extended Application

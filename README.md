@@ -1,6 +1,7 @@
 # Chimera
 
-Yet another throwaway app that retrieves weather for exploring some concepts related to Spring Boot.
+Yet another throwaway app that retrieves weather from OpenWeatherAPI, used for exploring some concepts related to Spring
+Boot. Project name does not mean anything - I just like naming stuff based on fantasy, mythology or pop-culture.
 
 Used for experimenting with setting up a modular Spring Boot application with a reusable core that can be extended by
 multiple applications.
@@ -52,7 +53,7 @@ containers via `testcontainers` library.
    ```bash
    ./gradlew spotlessApply
    ```
-3. To build project use `build` task.
+3. To build project use `build` task. **Note** that **build will fail** if code is not properly formatted.
    ```bash
    ./gradlew build
    ```
