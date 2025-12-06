@@ -41,7 +41,7 @@ chimera/
 
 ## How to use this
 
-This project uses Java 25. Building also requires a proper **Docker** environment as building will spawn docker
+This project uses Java 21. Building also requires a proper **Docker** environment as building will spawn docker
 containers via `testcontainers` library.
 
 1. To start containers for local usage.
