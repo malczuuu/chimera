@@ -14,6 +14,7 @@ jobs:
     strategy:
       matrix:
         java: [17, 21, 25]
+      fail-fast: false
     name: Build (Java ${{ matrix.java }})
     runs-on: ubuntu-latest
     permissions:
