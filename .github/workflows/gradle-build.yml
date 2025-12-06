@@ -11,13 +11,13 @@ on:
 
 jobs:
   build:
-    name: Build
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
     strategy:
       matrix:
         java: [17, 21, 25]
+    name: Build (Java ${{ matrix.java }})
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -36,4 +36,4 @@ jobs:
       - name: Gradle Build
         env:
           GRADLE_OPTS: "-Dorg.gradle.daemon=false -Dorg.gradle.parallel=false"
-        run: ./gradlew build -Pcontainers.enabled=true -Pchimera.java.version={{ matrix.java }}
+        run: ./gradlew build -Pcontainers.enabled=true -Pchimera.java.version=${{ matrix.java }}
