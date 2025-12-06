@@ -4,8 +4,8 @@ import org.gradle.jvm.toolchain.JavaLanguageVersion
 
 /**
  * Returns the Java language version for the given [project] as a [Provider]. Reads the version from
- * the Gradle property `project.java.version`.
+ * the Gradle property `chimera.java.version`.
  */
 fun getProjectJavaVersion(project: Project): Provider<JavaLanguageVersion> {
-  return project.providers.gradleProperty("project.java.version").map { JavaLanguageVersion.of(it) }
+  return project.providers.gradleProperty("chimera.java.version").map { JavaLanguageVersion.of(it) }
 }

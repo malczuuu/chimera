@@ -10,7 +10,15 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @SpringBootApplication
 public class ExtServiceApplication {
 
-  static void main(String[] args) {
+  /**
+   * The {@code main} method must be {@code public} because Spring Boot's {@code bootJar} task
+   * auto-detects the main class via reflection. If this method is not public, Gradle might fail to
+   * determine the entry point for the executable JAR.
+   *
+   * <p>Because this is a demo app that has option to change java version {@code gradle.properties},
+   * let's keep it public.
+   */
+  public static void main(String[] args) {
     SpringApplication.run(ExtServiceApplication.class, args);
   }
 }

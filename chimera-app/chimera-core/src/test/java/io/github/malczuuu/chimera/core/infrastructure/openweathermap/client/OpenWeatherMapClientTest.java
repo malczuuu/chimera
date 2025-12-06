@@ -66,7 +66,7 @@ class OpenWeatherMapClientTest {
     weatherClient.getWeather("Warsaw");
 
     assertThat(integrationLogRepository.count()).isEqualTo(1);
-    IntegrationLogEntity log = integrationLogRepository.findAll().getFirst();
+    IntegrationLogEntity log = integrationLogRepository.findAll().get(0);
     assertThat(log.getLabel()).isEqualTo("weather");
     assertThat(log.getProtocol()).isEqualTo("http");
     assertThat(log.getDirection()).isEqualTo("out");
@@ -95,7 +95,7 @@ class OpenWeatherMapClientTest {
 
     assertThat(result).isEmpty();
     assertThat(integrationLogRepository.count()).isEqualTo(1);
-    IntegrationLogEntity log = integrationLogRepository.findAll().getFirst();
+    IntegrationLogEntity log = integrationLogRepository.findAll().get(0);
     assertThat(log.getRequestAttributes()).contains("RestClientException");
     assertThat(log.getRequestAttributes()).contains("Connection timeout");
   }
@@ -109,7 +109,7 @@ class OpenWeatherMapClientTest {
 
     assertThat(result).isEmpty();
     assertThat(integrationLogRepository.count()).isEqualTo(1);
-    IntegrationLogEntity log = integrationLogRepository.findAll().getFirst();
+    IntegrationLogEntity log = integrationLogRepository.findAll().get(0);
     assertThat(log.getRequestAttributes()).contains("RuntimeException");
     assertThat(log.getRequestAttributes()).contains("Unexpected error");
   }
@@ -162,7 +162,7 @@ class OpenWeatherMapClientTest {
 
     weatherClient.getWeather("Krakow");
 
-    IntegrationLogEntity log = integrationLogRepository.findAll().getFirst();
+    IntegrationLogEntity log = integrationLogRepository.findAll().get(0);
     assertThat(log.getResponseBody()).isNotNull();
     assertThat(log.getResponseBody()).contains("Krakow");
     assertThat(log.getResponseBody()).contains("15.5");
@@ -176,7 +176,7 @@ class OpenWeatherMapClientTest {
 
     weatherClient.getWeather("Krakow");
 
-    IntegrationLogEntity log = integrationLogRepository.findAll().getFirst();
+    IntegrationLogEntity log = integrationLogRepository.findAll().get(0);
     assertThat(log.getResponseStatus()).isEqualTo("201 CREATED");
   }
 

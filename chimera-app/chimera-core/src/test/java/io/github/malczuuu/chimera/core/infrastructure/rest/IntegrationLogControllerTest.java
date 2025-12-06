@@ -173,7 +173,7 @@ class IntegrationLogControllerTest {
         .andExpect(status().isCreated());
 
     IntegrationLogEntity persisted =
-        integrationLogRepository.findAllByOrderByRequestTimestampDesc().getFirst();
+        integrationLogRepository.findAllByOrderByRequestTimestampDesc().get(0);
     assertThat(persisted.getLabel()).isEqualTo("Test API");
     assertThat(persisted.getDirection()).isEqualTo("INBOUND");
     assertThat(persisted.getProtocol()).isEqualTo("HTTPS");

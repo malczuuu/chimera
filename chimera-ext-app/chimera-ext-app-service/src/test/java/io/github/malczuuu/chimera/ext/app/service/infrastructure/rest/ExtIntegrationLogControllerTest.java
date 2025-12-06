@@ -76,7 +76,7 @@ class ExtIntegrationLogControllerTest {
     var entities = integrationLogRepository.findAllByOrderByRequestTimestampDesc();
     assertThat(entities).isNotEmpty();
 
-    IntegrationLogEntity savedLogEntity = entities.getFirst();
+    IntegrationLogEntity savedLogEntity = entities.get(0);
     assertThat(savedLogEntity).isInstanceOf(ExtIntegrationLogEntity.class);
     assertThat(((ExtIntegrationLogEntity) savedLogEntity).getTraceId()).isEqualTo("trace-12345");
   }
