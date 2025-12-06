@@ -5,6 +5,16 @@ on:
   push:
     branches:
       - "main"
+    paths:
+      - ".github/workflows/gradle-build.yml"
+      - "buildSrc/**"
+      - "chimera-app/**"
+      - "chimera-ext-app/**"
+      - "gradle/**"
+      - "**/*.gradle.kts"
+      - "gradle.properties"
+      - "gradlew"
+      - "gradlew.bat"
   pull_request:
     branches:
       - "main"

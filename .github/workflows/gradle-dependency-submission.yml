@@ -6,13 +6,13 @@ on:
     branches:
       - "main"
     paths:
+      - ".github/workflows/gradle-dependency-submission.yml"
+      - "buildSrc/**"
+      - "gradle/**"
       - "**/*.gradle.kts"
       - "gradle.properties"
-      - "gradle/**"
-      - "buildSrc/**"
       - "gradlew"
       - "gradlew.bat"
-      - ".github/workflows/gradle-dependency-submission.yml"
 
 jobs:
   dependency-submission:
