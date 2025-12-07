@@ -65,7 +65,7 @@ class CoreWeatherProcessorTest {
     assertThat(result).isEqualTo(1);
     verify(weatherClient).getWeather("Krakow");
     assertThat(weatherRepository.count()).isEqualTo(1);
-    WeatherEntity saved = weatherRepository.findAll().getFirst();
+    WeatherEntity saved = weatherRepository.findAll().get(0);
     assertThat(saved.getCity()).isEqualTo("Krakow");
     assertThat(saved.getTemperature()).isEqualTo(15.5);
   }
@@ -102,7 +102,7 @@ class CoreWeatherProcessorTest {
     verify(weatherClient).getWeather("Krakow");
     verify(weatherClient).getWeather("Invalid");
     assertThat(weatherRepository.count()).isEqualTo(1);
-    assertThat(weatherRepository.findAll().getFirst().getCity()).isEqualTo("Krakow");
+    assertThat(weatherRepository.findAll().get(0).getCity()).isEqualTo("Krakow");
   }
 
   @Test

@@ -54,7 +54,7 @@ class ExtOpenWeatherMapClientTest {
     assertThat(result).isPresent();
     assertThat(integrationLogRepository.count()).isEqualTo(1);
     ExtIntegrationLogEntity log =
-        (ExtIntegrationLogEntity) integrationLogRepository.findAll().getFirst();
+        (ExtIntegrationLogEntity) integrationLogRepository.findAll().get(0);
     assertThat(log.getTraceId()).isNotNull();
     assertThat(log.getTraceId())
         .matches("[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}");
@@ -70,7 +70,7 @@ class ExtOpenWeatherMapClientTest {
 
     assertThat(integrationLogRepository.count()).isEqualTo(1);
     ExtIntegrationLogEntity log =
-        (ExtIntegrationLogEntity) integrationLogRepository.findAll().getFirst();
+        (ExtIntegrationLogEntity) integrationLogRepository.findAll().get(0);
     assertThat(log.getLabel()).isEqualTo("weather");
     assertThat(log.getProtocol()).isEqualTo("http");
     assertThat(log.getDirection()).isEqualTo("out");
@@ -111,7 +111,7 @@ class ExtOpenWeatherMapClientTest {
     assertThat(result).isEmpty();
     assertThat(integrationLogRepository.count()).isEqualTo(1);
     ExtIntegrationLogEntity log =
-        (ExtIntegrationLogEntity) integrationLogRepository.findAll().getFirst();
+        (ExtIntegrationLogEntity) integrationLogRepository.findAll().get(0);
     assertThat(log.getTraceId()).isNotNull();
     assertThat(log.getRequestAttributes()).contains("RestClientException");
     assertThat(log.getRequestAttributes()).contains("Connection timeout");
@@ -126,7 +126,7 @@ class ExtOpenWeatherMapClientTest {
     weatherClient.getWeather("Gdansk");
 
     ExtIntegrationLogEntity log =
-        (ExtIntegrationLogEntity) integrationLogRepository.findAll().getFirst();
+        (ExtIntegrationLogEntity) integrationLogRepository.findAll().get(0);
     String traceId = log.getTraceId();
     assertThat(traceId).isNotNull();
     assertThat(traceId.split("-")).hasSize(5);
@@ -143,7 +143,7 @@ class ExtOpenWeatherMapClientTest {
     assertThat(result).isEmpty();
     assertThat(integrationLogRepository.count()).isEqualTo(1);
     ExtIntegrationLogEntity log =
-        (ExtIntegrationLogEntity) integrationLogRepository.findAll().getFirst();
+        (ExtIntegrationLogEntity) integrationLogRepository.findAll().get(0);
     assertThat(log.getTraceId()).isNotNull();
   }
 
@@ -158,7 +158,7 @@ class ExtOpenWeatherMapClientTest {
     assertThat(result).isPresent();
     assertThat(result.get().getTemperature()).isNull();
     ExtIntegrationLogEntity log =
-        (ExtIntegrationLogEntity) integrationLogRepository.findAll().getFirst();
+        (ExtIntegrationLogEntity) integrationLogRepository.findAll().get(0);
     assertThat(log.getTraceId()).isNotNull();
   }
 
@@ -171,7 +171,7 @@ class ExtOpenWeatherMapClientTest {
     weatherClient.getWeather("Krakow");
 
     ExtIntegrationLogEntity log =
-        (ExtIntegrationLogEntity) integrationLogRepository.findAll().getFirst();
+        (ExtIntegrationLogEntity) integrationLogRepository.findAll().get(0);
     assertThat(log.getResponseStatus()).isEqualTo("201 CREATED");
     assertThat(log.getTraceId()).isNotNull();
   }
@@ -185,7 +185,7 @@ class ExtOpenWeatherMapClientTest {
 
     assertThat(result).isEmpty();
     ExtIntegrationLogEntity log =
-        (ExtIntegrationLogEntity) integrationLogRepository.findAll().getFirst();
+        (ExtIntegrationLogEntity) integrationLogRepository.findAll().get(0);
     assertThat(log.getTraceId()).isNotNull();
     assertThat(log.getRequestAttributes()).contains("RuntimeException");
     assertThat(log.getRequestAttributes()).contains("Unexpected error");
