@@ -41,8 +41,8 @@ chimera/
 
 ## How to use this
 
-This project uses Java 25. Building also requires a proper **Docker** environment as building will spawn docker
-containers via `testcontainers` library.
+This project uses Java 17 (you may change it in [`gradle.properties`](./gradle.properties)). Building also requires a
+proper **Docker** environment as building will spawn docker containers via `testcontainers` library.
 
 1. To start containers for local usage.
    ```bash

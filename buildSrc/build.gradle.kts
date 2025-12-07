@@ -2,9 +2,9 @@ plugins {
     `kotlin-dsl`
 }
 
-// This sets the Java toolchain used to run Gradle tasks (here Java 17). Thanks to the Foojay plugin, Gradle will
-// automatically discover or download the required JDK if it's missing. This does NOT affect the Java version of the
-// application code, which can be higher (e.g., Java 25).
+// This is for buildSrc module only. Current toolchain is set to Java 17 here as a minimum
+// supported version by Gradle 9. Other modules can use higher Java version (e.g., 21 or 25). Local
+// Java installation may also be different, as long as it's higher than 17.
 java {
     toolchain.languageVersion = JavaLanguageVersion.of(17)
 }
