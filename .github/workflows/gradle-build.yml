@@ -48,5 +48,5 @@ jobs:
 
       - name: Gradle Build
         env:
-          GRADLE_OPTS: "-Dorg.gradle.daemon=false -Dorg.gradle.parallel=false"
+          GRADLE_OPTS: "-Dorg.gradle.configuration-cache=false -Dorg.gradle.daemon=false -Dorg.gradle.parallel=false"
         run: ./gradlew build -Pcontainers.enabled=true -Pchimera.java.version=${{ matrix.java }}
