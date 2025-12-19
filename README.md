@@ -4,7 +4,8 @@ Yet another throwaway app that retrieves weather from OpenWeatherAPI, used for e
 Boot. Project name does not mean anything - I just like naming stuff based on fantasy, mythology or pop-culture.
 
 Used for experimenting with setting up a modular Spring Boot application with a reusable core that can be extended by
-multiple applications.
+multiple applications. Leverages `@AutoConfiguration` and `@ConditionalOnMissingBean` annotations for creating
+extendable components.
 
 ## Table of Contents
 
@@ -59,10 +60,10 @@ proper **Docker** environment as building will spawn docker containers via `test
    ```
 4. For doing all-in-one, declare all tasks at once.
    ```bash
-   ./gradlew clean spotlessApply build
+   ./gradlew spotlessApply build
    ```
 5. By default, tests that use `testcontainers` are skipped. To enabled add `-Pcontainers.enabled=true`
    ```bash
-   ./gradlew clean test -Pcontainers.enabled=true
+   ./gradlew test -Pcontainers.enabled=true
    ```
    For running individual tests in IDE, set `containers.enabled=true` in `gradle.properties` file.
