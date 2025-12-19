@@ -2,7 +2,7 @@
 lombok = "1.18.42"
 problem4j-spring = "1.1.6"
 spotless = "8.1.0"
-spring-boot = "3.5.8"
+spring-boot = "3.5.9"
 springdoc-openapi = "2.8.14"
 wiremock-spring-boot = "3.10.6"
 
