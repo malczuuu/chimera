@@ -1,6 +1,6 @@
 [versions]
 lombok = "1.18.42"
-problem4j-spring = "1.1.7"
+problem4j-spring = "1.2.0"
 spotless = "8.1.0"
 spring-boot = "3.5.9"
 springdoc-openapi = "2.8.14"
@@ -12,7 +12,7 @@ spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }
 
 [libraries]
 lombok = { module = "org.projectlombok:lombok", version.ref = "lombok" }
-problem4j-spring-webmvc = { module = "io.github.malczuuu.problem4j:problem4j-spring-webmvc", version.ref = "problem4j-spring"  }
+problem4j-spring-webmvc = { module = "io.github.problem4j:problem4j-spring-webmvc", version.ref = "problem4j-spring"  }
 springdoc-openapi-starter-webmvc-ui = { module = "org.springdoc:springdoc-openapi-starter-webmvc-ui", version.ref = "springdoc-openapi" }
 wiremock-spring-boot = { module = "org.wiremock.integrations:wiremock-spring-boot", version.ref = "wiremock-spring-boot" }
 

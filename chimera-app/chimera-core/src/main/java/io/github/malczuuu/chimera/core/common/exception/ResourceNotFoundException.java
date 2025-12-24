@@ -1,8 +1,8 @@
 package io.github.malczuuu.chimera.core.common.exception;
 
-import io.github.malczuuu.problem4j.core.Problem;
-import io.github.malczuuu.problem4j.core.ProblemException;
-import io.github.malczuuu.problem4j.core.ProblemStatus;
+import io.github.problem4j.core.Problem;
+import io.github.problem4j.core.ProblemException;
+import io.github.problem4j.core.ProblemStatus;
 
 public class ResourceNotFoundException extends ProblemException {
 
