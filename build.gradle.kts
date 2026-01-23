@@ -6,12 +6,7 @@ plugins {
 
 allprojects {
     group = "io.github.malczuuu.chimera"
-
-    // In order to avoid hardcoding snapshot versions, version is derived from the current Git commit hash. For CI/CD
-    // add -Pversion={releaseVersion} parameter to match Git tag.
-    if (version == Project.DEFAULT_VERSION) {
-        version = getSnapshotVersion(rootProject.rootDir)
-    }
+    version = "1.0.0-SNAPSHOT"
 
     repositories {
         mavenCentral()
