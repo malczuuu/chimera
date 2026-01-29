@@ -1,13 +1,5 @@
-import org.gradle.api.tasks.testing.logging.TestExceptionFormat
-
 plugins {
-    id("java-library")
-    id("maven-publish")
-}
-
-java {
-    toolchain.languageVersion = getProjectJavaVersion(project)
-    withSourcesJar()
+    id("chimera.java-library-convention")
 }
 
 dependencies {
@@ -16,51 +8,4 @@ dependencies {
     testImplementation(project(":chimera-app:chimera-testkit"))
     testRuntimeOnly(libs.junit.platform.launcher)
     testRuntimeOnly(libs.postgresql)
-}
-
-publishing {
-    publications {
-        create<MavenPublication>("maven") {
-            groupId = project.group.toString()
-            artifactId = project.name
-            version = project.version.toString()
-            from(components["java"])
-        }
-    }
-}
-
-tasks.withType<JavaCompile>().configureEach {
-    options.encoding = "UTF-8"
-    options.compilerArgs.add("-parameters")
-}
-
-tasks.withType<Jar>().configureEach {
-    manifest {
-        attributes(
-            "Implementation-Title" to project.name,
-            "Implementation-Version" to project.version,
-            "Build-Jdk-Spec" to java.toolchain.languageVersion.get().toString(),
-            "Created-By" to "Gradle ${gradle.gradleVersion}",
-        )
-    }
-}
-
-tasks.withType<Test>().configureEach {
-    useJUnitPlatform {
-        if (project.findProperty("containers.enabled")?.toString() == "false") {
-            excludeTags("testcontainers")
-        }
-    }
-
-    testLogging {
-        events("passed", "skipped", "failed", "standardOut", "standardError")
-        exceptionFormat = TestExceptionFormat.SHORT
-        showStandardStreams = true
-    }
-
-    // For resolving warnings from mockito.
-    jvmArgs("-XX:+EnableDynamicAgentLoading")
-
-    systemProperty("user.language", "en")
-    systemProperty("user.country", "US")
 }
