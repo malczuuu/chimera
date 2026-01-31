@@ -1,4 +1,5 @@
 import chimera.Lombok.lombok
+
 plugins {
     id("chimera.spring-app-convention")
 }
