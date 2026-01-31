@@ -1,7 +1,7 @@
 # Chimera
 
 Yet another throwaway app that retrieves weather from OpenWeatherAPI, used for exploring some concepts related to Spring
-Boot. Project name does not mean anything - I just like naming stuff based on fantasy, mythology or pop-culture.
+Boot.
 
 Used for experimenting with setting up a modular Spring Boot application with a reusable core that can be extended by
 multiple applications. Leverages `@AutoConfiguration` and `@ConditionalOnMissingBean` annotations for creating
