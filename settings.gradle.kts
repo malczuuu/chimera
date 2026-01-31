@@ -25,8 +25,8 @@ verifyProjectNameDuplicates(rootProject)
 changeChildrenBuildFileNames(rootProject)
 
 /**
- * Duplicate project names have some side effects. This function that there are no duplicate project names in the build.
- * Throws an exception if duplicates are found.
+ * Duplicate project names have some side effects. This function verifies that there are no duplicate project names in
+ * the build. Throws an exception if duplicates are found.
  */
 fun verifyProjectNameDuplicates(project: ProjectDescriptor) {
     val projectsByName = mutableMapOf<String, MutableList<ProjectDescriptor>>()
