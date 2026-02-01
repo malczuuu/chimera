@@ -30,8 +30,8 @@ object Lombok {
    * external plugin.
    *
    * @param dependencyNotation A provider of a `MinimalExternalModuleDependency`, usually coming
-   *   from a version catalog (e.g., `libs.lombok`). This matches Gradle's built-in
-   *   dependency notation type for external module dependencies.
+   *   from a version catalog (e.g., `libs.lombok`). This matches Gradle's built-in dependency
+   *   notation type for external module dependencies.
    */
   fun DependencyHandler.lombok(dependencyNotation: Any) {
     add("compileOnly", dependencyNotation)
