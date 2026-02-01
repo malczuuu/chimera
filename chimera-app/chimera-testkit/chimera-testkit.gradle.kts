@@ -1,4 +1,4 @@
-import chimera.Lombok.lombok
+import internal.Lombok.lombok
 
 plugins {
     id("internal.java-library-convention")
