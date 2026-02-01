@@ -1,5 +1,5 @@
-group = property("chimera.group") as String
-version = property("chimera.version") as String
+group = property("internal.group") as String
+version = property("internal.version") as String
 
 repositories {
     mavenCentral()

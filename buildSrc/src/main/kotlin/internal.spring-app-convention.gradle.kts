@@ -1,5 +1,5 @@
 plugins {
-    id("chimera.java-convention")
+    id("internal.java-convention")
     id("org.springframework.boot")
 }
 

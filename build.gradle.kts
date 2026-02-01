@@ -1,7 +1,7 @@
 import com.diffplug.spotless.LineEnding
 
 plugins {
-    id("chimera.common-convention")
+    id("internal.common-convention")
     alias(libs.plugins.spotless)
 }
 
@@ -33,7 +33,8 @@ spotless {
     }
 
     kotlinGradle {
-        target("*.gradle.kts", "buildSrc/*.gradle.kts", "buildSrc/src/**/*.gradle.kts")
+        target("**/*.gradle.kts")
+        targetExclude("**/build/**")
 
         ktlint("1.8.0").editorConfigOverride(mapOf("max_line_length" to "120"))
         endWithNewline()
@@ -42,6 +43,7 @@ spotless {
 
     format("yaml") {
         target("**/*.yml", "**/*.yaml")
+        targetExclude("**/build/**")
 
         trimTrailingWhitespace()
         leadingTabsToSpaces(2)

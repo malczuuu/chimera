@@ -53,4 +53,4 @@ jobs:
             -Dorg.gradle.daemon=false
             -Dorg.gradle.parallel=false
             -Dorg.gradle.workers.max=1
-        run: ./gradlew build -Pcontainers.enabled=true -Pchimera.java.version=${{ matrix.java }}
+        run: ./gradlew build -Pcontainers.enabled=true -Pinternal.java.version=${{ matrix.java }}

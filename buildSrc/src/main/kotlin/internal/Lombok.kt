@@ -1,4 +1,4 @@
-package chimera
+package internal
 
 import org.gradle.api.artifacts.dsl.DependencyHandler
 
@@ -20,7 +20,7 @@ object Lombok {
    * Typical usage (with Version Catalogs):
    * ```
    * dependencies {
-   *     chimera.lombok(libs.chimera.lombok)
+   *     lombok(libs.lombok)
    * }
    * ```
    *
@@ -30,7 +30,7 @@ object Lombok {
    * external plugin.
    *
    * @param dependencyNotation A provider of a `MinimalExternalModuleDependency`, usually coming
-   *   from a version catalog (e.g., `libs.chimera.lombok`). This matches Gradle's built-in
+   *   from a version catalog (e.g., `libs.lombok`). This matches Gradle's built-in
    *   dependency notation type for external module dependencies.
    */
   fun DependencyHandler.lombok(dependencyNotation: Any) {

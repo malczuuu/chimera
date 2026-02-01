@@ -1,5 +1,5 @@
 plugins {
-    id("chimera.java-platform-convention")
+    id("internal.java-platform-convention")
 }
 
 dependencies {

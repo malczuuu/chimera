@@ -1,12 +1,12 @@
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 
 plugins {
-    id("chimera.common-convention")
+    id("internal.common-convention")
     id("java")
 }
 
 java {
-    toolchain.languageVersion = providers.gradleProperty("chimera.java.version").map { JavaLanguageVersion.of(it) }
+    toolchain.languageVersion = providers.gradleProperty("internal.java.version").map { JavaLanguageVersion.of(it) }
 }
 
 tasks.withType<JavaCompile>().configureEach {
@@ -46,4 +46,7 @@ tasks.withType<Test>().configureEach {
 
     systemProperty("user.language", "en")
     systemProperty("user.country", "US")
+
+    // There might be no tests in certain subprojects. Don't fail the build because of that. To be revisited.
+    failOnNoDiscoveredTests = false
 }

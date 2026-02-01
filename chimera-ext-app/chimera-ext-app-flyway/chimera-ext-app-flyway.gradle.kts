@@ -1,5 +1,5 @@
 plugins {
-    id("chimera.spring-app-convention")
+    id("internal.spring-app-convention")
 }
 
 dependencies {

@@ -1,7 +1,7 @@
 import chimera.Lombok.lombok
 
 plugins {
-    id("chimera.java-library-convention")
+    id("internal.java-library-convention")
 }
 
 dependencies {
