@@ -1,4 +1,5 @@
 [versions]
+idea-ext = "1.4"
 lombok = "1.18.42"
 problem4j-spring = "1.2.2"
 spotless = "8.2.1"
@@ -7,6 +8,7 @@ springdoc-openapi = "2.8.15"
 wiremock-spring-boot = "3.10.6"
 
 [plugins]
+idea-ext = { id = "org.jetbrains.gradle.plugin.idea-ext", version.ref = "idea-ext" }
 spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
 spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }
 
