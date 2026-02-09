@@ -3,7 +3,7 @@ updates:
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "quarterly"
+      interval: "yearly"
     target-branch: main
     open-pull-requests-limit: 10
     labels:
@@ -12,7 +12,7 @@ updates:
   - package-ecosystem: "gradle"
     directory: "/"
     schedule:
-      interval: "quarterly"
+      interval: "yearly"
     target-branch: main
     open-pull-requests-limit: 10
     allow:
@@ -27,7 +27,7 @@ updates:
   - package-ecosystem: "docker-compose"
     directory: "/chimera-localhost"
     schedule:
-      interval: "quarterly"
+      interval: "yearly"
     target-branch: main
     labels:
       - "dependencies"
