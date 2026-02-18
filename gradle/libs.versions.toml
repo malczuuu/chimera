@@ -1,5 +1,5 @@
 [versions]
-idea-ext = "1.4"
+idea-ext = "1.4.1"
 lombok = "1.18.42"
 problem4j-spring = "1.2.5"
 spotless = "8.2.1"
