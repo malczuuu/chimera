@@ -1,7 +1,7 @@
 [versions]
 idea-ext = "1.4"
 lombok = "1.18.42"
-problem4j-spring = "1.2.2"
+problem4j-spring = "1.2.5"
 spotless = "8.2.1"
 spring-boot = "3.5.10"
 springdoc-openapi = "2.8.15"
