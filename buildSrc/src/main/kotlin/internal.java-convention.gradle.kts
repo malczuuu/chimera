@@ -6,7 +6,7 @@ plugins {
 }
 
 java {
-    toolchain.languageVersion = providers.gradleProperty("internal.java.version").map { JavaLanguageVersion.of(it) }
+    toolchain.languageVersion = JavaLanguageVersion.of(25)
 }
 
 tasks.withType<JavaCompile>().configureEach {
@@ -18,7 +18,6 @@ tasks.withType<Jar>().configureEach {
     manifest {
         attributes["Implementation-Title"] = project.name
         attributes["Implementation-Version"] = project.version
-        attributes["Build-Jdk-Spec"] = java.toolchain.languageVersion.get().toString()
         attributes["Created-By"] = "Gradle ${gradle.gradleVersion}"
     }
     from("${rootProject.rootDir}/LICENSE") {
@@ -45,7 +44,4 @@ tasks.withType<Test>().configureEach {
 
     systemProperty("user.language", "en")
     systemProperty("user.country", "US")
-
-    // There might be no tests in certain subprojects. Don't fail the build because of that. To be revisited.
-    failOnNoDiscoveredTests = false
 }

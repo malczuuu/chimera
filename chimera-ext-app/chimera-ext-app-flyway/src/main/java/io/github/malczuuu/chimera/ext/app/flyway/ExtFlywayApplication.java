@@ -6,15 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class ExtFlywayApplication {
 
-  /**
-   * The {@code main} method must be {@code public} because Spring Boot's {@code bootJar} task
-   * auto-detects the main class via reflection. If this method is not public, Gradle might fail to
-   * determine the entry point for the executable JAR.
-   *
-   * <p>Because this is a demo app that has option to change java version {@code gradle.properties},
-   * let's keep it public.
-   */
-  public static void main(String[] args) {
+  static void main(String[] args) {
     SpringApplication.run(ExtFlywayApplication.class, args);
   }
 }

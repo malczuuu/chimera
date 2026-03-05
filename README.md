@@ -1,4 +1,6 @@
-# Chimera
+# Chimera Project
+
+[![Gradle Build](https://github.com/malczuuu/chimera-project/actions/workflows/gradle-build.yml/badge.svg)](https://github.com/malczuuu/chimera-project/actions/workflows/gradle-build.yml)
 
 Yet another throwaway app that retrieves weather from OpenWeatherAPI, used for exploring some concepts related to Spring
 Boot.
@@ -25,7 +27,7 @@ extracted into an auto-configurable core module. This allows multiple applicatio
 ## Architecture
 
 ```
-chimera/
+./
 ├── chimera-app/              # base application
 │   ├── chimera-app-flyway/   # flyway runner for base migrations
 │   ├── chimera-app-service/  # runnable base application
@@ -37,33 +39,34 @@ chimera/
 │   ├── chimera-ext-app-flyway/     # flyway runner for extended migrations
 │   ├── chimera-ext-app-service/    # runnable extended application
 │   └── chimera-ext-migration/      # extension database migrations
-└── chimera-localhost/        # local development environment (via docker-compose)
+└── localhost/                # local development environment (via docker-compose)
 ```
 
 ## How to use this
 
-This project uses Java 17 (you may change it in [`gradle.properties`](./gradle.properties)). Building also requires a
-proper **Docker** environment as building will spawn docker containers via `testcontainers` library.
+### Prerequisites
 
-1. To start containers for local usage.
-   ```bash
-   cd chimera-localhost/
-   docker-compose up -d
-   ```
-2. To format code use `spotlessApply` task.
-   ```bash
-   ./gradlew spotlessApply
-   ```
-3. To build project use `build` task. **Note** that **build will fail** if code is not properly formatted.
-   ```bash
-   ./gradlew build
-   ```
-4. For doing all-in-one, declare all tasks at once.
-   ```bash
-   ./gradlew spotlessApply build
-   ```
-5. By default, tests that use `testcontainers` are skipped. To enabled add `-Pcontainers.enabled=true`
-   ```bash
-   ./gradlew test -Pcontainers.enabled=true
-   ```
-   For running individual tests in IDE, set `containers.enabled=true` in `gradle.properties` file.
+- JDK 17+ (Gradle 9 requires Java 17 or higher, but code is compiled with Java 25 Toolchain)
+- Docker (required for Testcontainers)
+
+### Build & Test
+
+Default Gradle tasks are `spotlessApply` and `build`. To run both formatting and tests, simply execute:
+
+```bash
+./gradlew
+```
+
+To run tests, execute:
+
+```bash
+./gradlew test
+```
+
+To run tests with Testcontainers, ensure Docker is running and add `-Pcontainers.enabled`:
+
+```bash
+./gradlew test -Pcontainers.enabled
+```
+
+To run individual tests via IntelliJ IDEA, set `containers.enabled` in `gradle.properties` for convenience.

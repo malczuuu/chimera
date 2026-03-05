@@ -1,6 +1,3 @@
-group = property("internal.group") as String
-version = property("internal.version") as String
-
 repositories {
     mavenCentral()
 }

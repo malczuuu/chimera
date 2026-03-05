@@ -1,6 +1,7 @@
 pluginManagement {
     repositories {
         gradlePluginPortal()
+        mavenCentral()
     }
 }
 
@@ -8,7 +9,7 @@ plugins {
     id("org.gradle.toolchains.foojay-resolver-convention").version("1.0.0")
 }
 
-rootProject.name = "chimera"
+rootProject.name = "chimera-project"
 
 include(":chimera-app:chimera-app-flyway")
 include(":chimera-app:chimera-app-service")
